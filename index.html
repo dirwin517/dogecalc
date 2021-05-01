@@ -18,10 +18,12 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
         let coininput = document.createElement('input');
         coininput.id = 'coin' + index;
         coininput.type = 'number';
+        coininput.onkeyup = () => reCalc();
 
         let priceinput = document.createElement('input');
         priceinput.id = 'price' + index;
         priceinput.type = 'number';
+        priceinput.onkeyup = () => reCalc();
 
         let removebutton = document.createElement('button');
         removebutton.onclick = () => removeTransaction(index);
@@ -77,8 +79,8 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
     </tr>
     <div id="cheat">
     <tr id="tran0">
-        <td><input id="coin0" type="number"></td>
-        <td>@<input id="price0" type="number"></td>
+        <td><input id="coin0" type="number" onkeyup="reCalc()"></td>
+        <td>@<input id="price0" type="number" onkeyup="reCalc()"></td>
         <td><button onclick="removeTransaction('0')">X</button></td>
     </tr>
     </div>
@@ -90,19 +92,19 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
         <td><button onclick="addMore()">Add More Transactions</button></td>
     </tr>
 <tr>
-    <td><label>Average Coin Price:</label><label id="avgCoinPrice">$0.00</label></td>
+    <td><label>Average Coin Price:&nbsp;&nbsp;$</label><label id="avgCoinPrice">0.00</label></td>
 </tr>
 <tr>
-    <td><label>Total Coins:</label><label id="totalCoins">0.00</label></td>
+    <td><label>Total Coins:&nbsp;&nbsp;</label><label id="totalCoins">0.00</label></td>
 </tr>
 <tr>
-    <td><label>Total Profit:</label><label id="totalProfit">0.00</label></td>
+    <td><label>Total Profit:&nbsp;&nbsp;$</label><label id="totalProfit">0.00</label></td>
 </tr>
 <tr>
-    <td><label>Total Value:</label><label id="totalValue">0.00</label></td>
+    <td><label>Total Value:&nbsp;&nbsp;$</label><label id="totalValue">0.00</label></td>
 </tr>
 <tr>
-    <td><label>hypothetical price:</label><input type="number" id="hypo"></td>
+    <td><label>hypothetical price:&nbsp;&nbsp;</label><input type="number" id="hypo" onkeyup="reCalc()"></td>
     <td><button onclick="reCalc()">Re Calculate</button></td>
 </tr>
 
