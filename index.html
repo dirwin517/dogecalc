@@ -30,7 +30,7 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
         removebutton.innerText = 'X'
 
         cointd.append(coininput);
-        pricetd.append('@')
+        pricetd.append('@ $')
         pricetd.append(priceinput);
         removetd.append(removebutton);
         nodes.append(cointd);
@@ -80,7 +80,7 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
     <div id="cheat">
     <tr id="tran0">
         <td><input id="coin0" type="number" onkeyup="reCalc()"></td>
-        <td>@<input id="price0" type="number" onkeyup="reCalc()"></td>
+        <td>@&nbsp;$<input id="price0" type="number" onkeyup="reCalc()"></td>
         <td><button onclick="removeTransaction('0')">X</button></td>
     </tr>
     </div>
@@ -104,7 +104,7 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
     <td><label>Total Value:&nbsp;&nbsp;$</label><label id="totalValue">0.00</label></td>
 </tr>
 <tr>
-    <td><label>hypothetical price:&nbsp;&nbsp;</label><input type="number" id="hypo" onkeyup="reCalc()"></td>
+    <td><label>hypothetical price:&nbsp;&nbsp;$</label><input type="number" id="hypo" onkeyup="reCalc()"></td>
     <td><button onclick="reCalc()">Re Calculate</button></td>
 </tr>
 
