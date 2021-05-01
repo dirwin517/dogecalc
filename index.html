@@ -62,9 +62,9 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
         let hypo = document.getElementById('hypo').value
 
         document.getElementById('totalCoins').innerText = totalCoins;
-        document.getElementById('avgCoinPrice').innerText = (totalPrice/totalCoins);
-        document.getElementById('totalProfit').innerText = (totalCoins * hypo)- totalPrice;
-        document.getElementById('totalValue').innerText = totalCoins * hypo
+        document.getElementById('avgCoinPrice').innerText = (totalPrice/totalCoins).toFixed(4);
+        document.getElementById('totalProfit').innerText = ((totalCoins * hypo)- totalPrice).toFixed(4);
+        document.getElementById('totalValue').innerText = (totalCoins * hypo).toFixed(4)
 
     }
 
@@ -72,6 +72,11 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
         let child = document.getElementById('tran' + number);
         child.parentNode.removeChild(child);
     }
+
+        setTimeout(() => {
+            reCalc();
+        }, 500);
+
 </script>
 
 <table id="table">
@@ -86,8 +91,8 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
     </tr>
     <div id="cheat">
     <tr id="tran0">
-        <td><input id="coin0" type="number" onkeyup="reCalc()"></td>
-        <td>@&nbsp;$<input id="price0" type="number" onkeyup="reCalc()"></td>
+        <td><input id="coin0" type="number" onkeyup="reCalc()" value="1500"></td>
+        <td>@&nbsp;$<input id="price0" type="number" onkeyup="reCalc()" value="0.345"></td>
         <td><button onclick="removeTransaction('0')">X</button></td>
     </tr>
     </div>
@@ -114,7 +119,7 @@ Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
     <td><label>Total Value:&nbsp;&nbsp;$</label><label id="totalValue">0.00</label></td>
 </tr>
 <tr>
-    <td><label>hypothetical price:&nbsp;&nbsp;$</label><input type="number" id="hypo" onkeyup="reCalc()"></td>
+    <td><label>hypothetical price:&nbsp;&nbsp;$</label><input type="number" id="hypo" onkeyup="reCalc()" value="4.69"></td>
     <td><button onclick="reCalc()">Re Calculate</button></td>
 </tr>
 
