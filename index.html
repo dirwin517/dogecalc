@@ -1,0 +1,114 @@
+<html>
+
+<body>
+Donate Doge: DAmxGBjVxNJMhTPMqPZwFheXL4P2wLozRL
+<br/>
+<br/>
+
+<script type="application/javascript">
+    let index = 1;
+
+    function addMore(evt) {
+        let nodes = document.createElement('tr');
+        nodes.id = 'tran' + index;
+        let cointd = document.createElement('td');
+        let pricetd = document.createElement('td');
+        let removetd = document.createElement('td');
+
+        let coininput = document.createElement('input');
+        coininput.id = 'coin' + index;
+        coininput.type = 'number';
+
+        let priceinput = document.createElement('input');
+        priceinput.id = 'price' + index;
+        priceinput.type = 'number';
+
+        let removebutton = document.createElement('button');
+        removebutton.onclick = () => removeTransaction(index);
+        removebutton.innerText = 'X'
+
+        cointd.append(coininput);
+        pricetd.append('@')
+        pricetd.append(priceinput);
+        removetd.append(removebutton);
+        nodes.append(cointd);
+        nodes.append(pricetd);
+        nodes.append(removetd);
+        document.getElementById('table').append(nodes);
+        ++index;
+    }
+
+    function reCalc(evt) {
+        let totalPrice = 0.0;
+        let totalCoins = 0.0;
+        for(let i = 0; i < index; ++i) {
+            try {
+                let price = parseFloat(document.getElementById('price' + i).value);
+                let coin = parseFloat(document.getElementById('coin' + i).value);
+                totalPrice += (price * coin);
+                totalCoins += coin;
+            }
+            catch(e){}
+        }
+
+        let hypo = document.getElementById('hypo').value
+
+        document.getElementById('totalCoins').innerText = totalCoins;
+        document.getElementById('avgCoinPrice').innerText = (totalPrice/totalCoins);
+        document.getElementById('totalProfit').innerText = (totalCoins * hypo)- totalPrice;
+        document.getElementById('totalValue').innerText = totalCoins * hypo
+
+    }
+
+    function removeTransaction(number) {
+        let child = document.getElementById('tran' + number);
+        child.parentNode.removeChild(child);
+    }
+</script>
+
+<table id="table">
+    <tr>
+        <th>
+            Coins
+        </th>
+        <th>
+            Price (price per coin)
+        </th>
+    </tr>
+    <div id="cheat">
+    <tr id="tran0">
+        <td><input id="coin0" type="number"></td>
+        <td>@<input id="price0" type="number"></td>
+        <td><button onclick="removeTransaction('0')">X</button></td>
+    </tr>
+    </div>
+
+
+</table>
+<table>
+    <tr>
+        <td><button onclick="addMore()">Add More Transactions</button></td>
+    </tr>
+<tr>
+    <td><label>Average Coin Price:</label><label id="avgCoinPrice">$0.00</label></td>
+</tr>
+<tr>
+    <td><label>Total Coins:</label><label id="totalCoins">0.00</label></td>
+</tr>
+<tr>
+    <td><label>Total Profit:</label><label id="totalProfit">0.00</label></td>
+</tr>
+<tr>
+    <td><label>Total Value:</label><label id="totalValue">0.00</label></td>
+</tr>
+<tr>
+    <td><label>hypothetical price:</label><input type="number" id="hypo"></td>
+    <td><button onclick="reCalc()">Re Calculate</button></td>
+</tr>
+
+</table>
+
+</body>
+</html>
+
+
